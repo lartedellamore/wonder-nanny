@@ -69,9 +69,9 @@
     <div class="card">
       <h2>1. Package</h2>
       <div class="opts" id="pkg">
-        <label class="opt"><input type="radio" name="pkg" value="A" checked><b>A</b>Wonder Afternoon · 4 h<span>€195</span></label>
-        <label class="opt"><input type="radio" name="pkg" value="B"><b>B</b>Big Day of Wonder · 8 h<span>€395</span></label>
-        <label class="opt"><input type="radio" name="pkg" value="C"><b>C</b>Wonder Away · 24 h+<span>from €650</span></label>
+        <label class="opt"><input type="radio" name="pkg" value="A" checked><b>A</b>An afternoon · 4 h<span>€215</span></label>
+        <label class="opt"><input type="radio" name="pkg" value="B"><b>B</b>A whole day · 8 h<span>€435</span></label>
+        <label class="opt"><input type="radio" name="pkg" value="C"><b>C</b>A night, or away · 24 h+<span>from €695</span></label>
       </div>
     </div>
     <div class="card">
@@ -99,7 +99,7 @@
     <div class="card">
       <h2>4. Summary</h2>
       <div class="sum" id="sum"></div>
-      <p class="muted">Prices exclude VAT and are indicative until confirmed by Wietske. Package C is quoted individually. The 7% gift is shown so you can see it, not hidden.</p>
+      <p class="muted">Prices exclude VAT and are indicative until confirmed by Wietske. Package C is quoted individually. The 10% gift is shown so you can see it, not hidden.</p>
       <div class="row-x">
         <button class="btn solid" id="send">Send this as a request</button>
         <button class="btn" id="savelog">Save to my log</button>
@@ -172,7 +172,7 @@
   <section class="panel-x" id="p-log" hidden>
     <div class="card">
       <h2>My bookings</h2>
-      <p class="muted">Your own record on this device: for your invoices, the 7% gift and the Wonder Gift count (one free afternoon for a single mother per ten paid bookings).</p>
+      <p class="muted">Your own record on this device: for your invoices, the 10% gift and the Wonder Gift count (one free afternoon for a single mother per ten paid bookings).</p>
       <div class="sum" id="logsum"></div>
       <ul class="log" id="loglist" style="list-style:none;padding:0;margin:12px 0 0"></ul>
       <div class="row-x"><button class="btn" id="exportlog">Export as text</button><button class="btn" id="clearlog">Clear log</button></div>
@@ -182,7 +182,7 @@
 
 <script>
 (function () {
-  var P = { A: { name: 'Wonder Afternoon', price: 195, sib: 45 }, B: { name: 'Big Day of Wonder', price: 395, sib: 75 }, C: { name: 'Wonder Away', price: 650, sib: 0 } };
+  var P = { A: { name: 'An afternoon', price: 215, sib: 45 }, B: { name: 'A whole day', price: 435, sib: 75 }, C: { name: 'A night, or away', price: 695, sib: 0 } };
   var IT = {
     A: [['Little Masters', 'Rijksmuseum, one gallery, then sketching (indoor already)'], ['Canal & Cookies', 'canal boat + baking at home (baking only)'], ['Vondelpark Explorers', 'nature hunt + playground (NEMO)'], ['NEMO Afternoon', 'two floors + roof (indoor already)'], ['Little Saints', 'church art story + park, on request (church only)']],
     B: [['Windmills & Cheese', 'Zaanse Schans (Artis)'], ['Artis & Micropia', 'slow zoo day (indoor already)'], ['Beach Day', 'Zandvoort / Bloemendaal, May–Sept (Artis)'], ['Castle & Fort', 'Muiderslot, Apr–Oct (Scheepvaartmuseum)'], ['Bike & Bloom', 'Amsterdamse Bos + goat farm (Tropenmuseum / Wereldmuseum)']],
@@ -218,7 +218,7 @@
       if (c.value === 'hours') { var h = +$('#xh').value || 0; if (h) { lines.push(['Early / late hours × ' + h, 10 * h]); total += 10 * h; } return; }
       var v = AD[c.value] * (c.value === 'lunch' ? n : 1); lines.push([c.labels[0].querySelector('b').textContent + (c.value === 'lunch' ? ' × ' + n : '') + (c.value === 'dinner' ? ' (+ cost)' : ''), v]); total += v;
     });
-    return { lines: lines, total: total, gift: Math.round(total * 0.07 * 100) / 100 };
+    return { lines: lines, total: total, gift: Math.round(total * 0.1 * 100) / 100 };
   }
   function sum() {
     var r = calc(), it = (document.querySelector('input[name=it]:checked') || {}).value || '';
@@ -234,7 +234,7 @@
   function planText() {
     var r = calc(), it = (document.querySelector('input[name=it]:checked') || {}).value || '-';
     return ['Wonder Nanny request', 'Package: ' + pkg() + ' · ' + P[pkg()].name, 'Itinerary: ' + it, 'Date: ' + ($('#date').value || '-'), 'Children: ' + ($('#kids').value || '-') + ' (' + $('#n').value + ')', '',
-      r.lines.map(function (l) { return l[0] + ': €' + l[1]; }).join('\n'), 'Total ex VAT: €' + r.total, 'Gift (7%): €' + r.gift.toFixed(2)].join('\n');
+      r.lines.map(function (l) { return l[0] + ': €' + l[1]; }).join('\n'), 'Total ex VAT: €' + r.total, 'Gift (10%): €' + r.gift.toFixed(2)].join('\n');
   }
   $('#send').onclick = function () { location.href = 'mailto:amore@lartedellamore.com?subject=' + encodeURIComponent('Wonder Nanny request — ' + pkg()) + '&body=' + encodeURIComponent(planText()); };
   $('#savelog').onclick = function () {
