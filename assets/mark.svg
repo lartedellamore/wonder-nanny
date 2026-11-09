@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="#B08A34" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+  <!-- a small sun, rising behind a cloud: wonder, seen -->
+  <circle cx="40" cy="24" r="8"/>
+  <path d="M40 9v4M52 24h3M48.5 15.5l2.1-2.1M31.5 15.5l-2.1-2.1"/>
+  <path d="M14 46h32a8 8 0 0 0 1.2-15.9A11 11 0 0 0 26 27.5 8.5 8.5 0 0 0 14 46z"/>
+  <path d="M22 52h26" stroke="#DDCFA6"/>
+</svg>
