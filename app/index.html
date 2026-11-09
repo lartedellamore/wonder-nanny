@@ -99,7 +99,7 @@
     <div class="card">
       <h2>4. Summary</h2>
       <div class="sum" id="sum"></div>
-      <p class="muted">Prices exclude VAT and are indicative until confirmed by Wietske. Package C is quoted individually. The 10% gift is shown so you can see it, not hidden.</p>
+      <p class="muted">Prices exclude VAT and are indicative until confirmed by Wietske. Package C is quoted individually. The 7% gift is shown so you can see it, not hidden.</p>
       <div class="row-x">
         <button class="btn solid" id="send">Send this as a request</button>
         <button class="btn" id="savelog">Save to my log</button>
@@ -172,7 +172,7 @@
   <section class="panel-x" id="p-log" hidden>
     <div class="card">
       <h2>My bookings</h2>
-      <p class="muted">Your own record on this device: for your invoices, the 10% gift and the Wonder Gift count (one free afternoon for a single mother per ten paid bookings).</p>
+      <p class="muted">Your own record on this device: for your invoices, the 7% gift and the Wonder Gift count (one free afternoon for a single mother per ten paid bookings).</p>
       <div class="sum" id="logsum"></div>
       <ul class="log" id="loglist" style="list-style:none;padding:0;margin:12px 0 0"></ul>
       <div class="row-x"><button class="btn" id="exportlog">Export as text</button><button class="btn" id="clearlog">Clear log</button></div>
@@ -218,7 +218,7 @@
       if (c.value === 'hours') { var h = +$('#xh').value || 0; if (h) { lines.push(['Early / late hours × ' + h, 10 * h]); total += 10 * h; } return; }
       var v = AD[c.value] * (c.value === 'lunch' ? n : 1); lines.push([c.labels[0].querySelector('b').textContent + (c.value === 'lunch' ? ' × ' + n : '') + (c.value === 'dinner' ? ' (+ cost)' : ''), v]); total += v;
     });
-    return { lines: lines, total: total, gift: Math.round(total * 0.1 * 100) / 100 };
+    return { lines: lines, total: total, gift: Math.round(total * 0.07 * 100) / 100 };
   }
   function sum() {
     var r = calc(), it = (document.querySelector('input[name=it]:checked') || {}).value || '';
@@ -234,7 +234,7 @@
   function planText() {
     var r = calc(), it = (document.querySelector('input[name=it]:checked') || {}).value || '-';
     return ['Wonder Nanny request', 'Package: ' + pkg() + ' · ' + P[pkg()].name, 'Itinerary: ' + it, 'Date: ' + ($('#date').value || '-'), 'Children: ' + ($('#kids').value || '-') + ' (' + $('#n').value + ')', '',
-      r.lines.map(function (l) { return l[0] + ': €' + l[1]; }).join('\n'), 'Total ex VAT: €' + r.total, 'Gift (10%): €' + r.gift.toFixed(2)].join('\n');
+      r.lines.map(function (l) { return l[0] + ': €' + l[1]; }).join('\n'), 'Total ex VAT: €' + r.total, 'Gift (7%): €' + r.gift.toFixed(2)].join('\n');
   }
   $('#send').onclick = function () { location.href = 'mailto:amore@lartedellamore.com?subject=' + encodeURIComponent('Wonder Nanny request — ' + pkg()) + '&body=' + encodeURIComponent(planText()); };
   $('#savelog').onclick = function () {
